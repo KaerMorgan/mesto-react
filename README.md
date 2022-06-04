@@ -1,1 +1,3 @@
-# mesto-react
+# Проект: Место (React)
+
+Work in progress
