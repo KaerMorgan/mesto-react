@@ -1,44 +1,14 @@
-import buttonAdd from '../images/button_add.svg'
 import buttonClose from '../images/button_close.svg'
-import buttonEdit from '../images/button_edit.svg'
-// import liked from '../images/liked.svg'
-// import likeButton from '../images/like_button.svg'
-// import deleteButton from '../images/delete_button.png'
-import headerLogo from '../images/header__logo.svg'
-import profileAvatar from '../images/profile__avatar.png'
-import avatarMask from '../images/avatar-mask.png'
+import Header from './Header'
+import Main from './Main'
+import Footer from './Footer';
 
 function App() {
   return (
     <>
-      <header className="header">
-        <img src={headerLogo} alt="Место" className="header__logo" />
-      </header>
-      <main className="main">
-        <section className="profile">
-          <div className="profile__avatar-container">
-            <img src={profileAvatar} alt="Аватар" className="profile__avatar" />
-            <div className="profile__avatar-mask"><img src={avatarMask} alt="Маска" /></div>
-          </div>
-          <div className="profile__info">
-            <h1 className="profile__name" id="profile__name">Жак-Ив Кусто</h1>
-            <p className="profile__about" id="profile__about">Исследователь океана</p>
-            <button type="button" className="profile__edit-button">
-              <img className="profile__edit-image" src={buttonEdit} alt="Редактировать" />
-            </button>
-          </div>
-          <button type="button" className="profile__add-button">
-            <img className="profile__add-button-icon" src={buttonAdd} alt="Добавить" />
-          </button>
-        </section>
-        <section className="elements">
-          <ul className="elements__grid">
-          </ul>
-        </section>
-      </main>
-      <footer className="footer">
-        <p className="footer__copyright">© 2022 Mesto Russia</p>
-      </footer>
+      <Header />
+      <Main />
+      <Footer />
       <div className="popup popup_type_edit">
         <div className="popup__container">
           <button type="button" className="popup__close">
