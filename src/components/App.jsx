@@ -1,7 +1,10 @@
+/* eslint-disable jsx-a11y/heading-has-content */
+import React from 'react';
 import buttonClose from '../images/button_close.svg'
 import Header from './Header'
 import Main from './Main'
 import Footer from './Footer';
+import PopupWithForm from './PopupWithForm';
 
 function App() {
   return (
@@ -9,7 +12,8 @@ function App() {
       <Header />
       <Main />
       <Footer />
-      <div className="popup popup_type_edit">
+
+      <PopupWithForm name={"edit"}>
         <div className="popup__container">
           <button type="button" className="popup__close">
             <img className="popup__close-icon" src={buttonClose} alt="Закрыть форму" />
@@ -27,9 +31,10 @@ function App() {
             <button className="popup__submit" type="submit">Сохранить</button>
           </form>
         </div>
-      </div>
-      <div className="popup popup_type_add">
-        <div className="popup__container">
+      </PopupWithForm>
+
+      <PopupWithForm name={"add"}>
+      <div className="popup__container">
           <button type="button" className="popup__close">
             <img className="popup__close-icon" src={buttonClose} alt="Закрыть форму" />
           </button>
@@ -46,8 +51,9 @@ function App() {
             <button className="popup__submit" type="submit">Создать</button>
           </form>
         </div>
-      </div>
-      <div className="popup popup_type_avatar">
+      </PopupWithForm>
+
+      <PopupWithForm name={"avatar"}>
         <div className="popup__container">
           <button type="button" className="popup__close">
             <img className="popup__close-icon" src={buttonClose} alt="Закрыть форму" />
@@ -61,8 +67,9 @@ function App() {
             <button className="popup__submit" type="submit">Сохранить</button>
           </form>
         </div>
-      </div>
-      <div className="popup popup_type_delete">
+      </PopupWithForm>
+
+      <PopupWithForm name={"delete"}>
         <div className="popup__container">
           <button type="button" className="popup__close">
             <img className="popup__close-icon" src={buttonClose} alt="Закрыть форму" />
@@ -70,7 +77,9 @@ function App() {
           <h3 className="popup__heading">Вы уверены?</h3>
           <button className="popup__submit" type="submit">Да</button>
         </div>
-      </div>
+      </PopupWithForm>
+
+
       <div className="popup photo-view">
         <div className="photo-view__container">
           <button type="button" className="popup__close">
