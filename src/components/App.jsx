@@ -12,6 +12,18 @@ function App() {
 const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState(false)
 const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(false)
 const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false)
+const [selectedCard, setSelectedCard] = React.useState(false)
+
+function closeAllPopups() {
+  setIsEditProfilePopupOpen(false)
+  setIsEditAvatarPopupOpen(false)
+  setIsAddPlacePopupOpen(false)
+  setSelectedCard({})
+}
+
+function handleCardClick(card) {
+  setSelectedCard(card)
+}
 
   return (
     <>
@@ -23,19 +35,20 @@ const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false)
       handleEditAvatarClick={setIsEditAvatarPopupOpen}
       isAddPlacePopupOpen={isAddPlacePopupOpen}
       handleAddPlaceClick={setIsAddPlacePopupOpen}
+      onCardClick={handleCardClick}
       />
       <Footer />
 
-      <PopupWithForm name="edit" title="Редактировать профиль" submitButtonText="Сохранить" isOpened={isEditProfilePopupOpen} handleCloseButton={setIsEditProfilePopupOpen}>
+      <PopupWithForm name="edit" title="Редактировать профиль" submitButtonText="Сохранить" isOpened={isEditProfilePopupOpen} onClose={closeAllPopups}>
         <InputWithLabel name="name" id="profile__name-input" type='text' placeholder='Имя' />
         <InputWithLabel name="about" id="profile__about-input" type='text' placeholder='Профессиональная деятельность' />
       </PopupWithForm>
 
-      <PopupWithForm name="avatar" title="Обновить аватар" submitButtonText="Сохранить" isOpened={isEditAvatarPopupOpen} handleCloseButton={setIsEditAvatarPopupOpen}>
+      <PopupWithForm name="avatar" title="Обновить аватар" submitButtonText="Сохранить" isOpened={isEditAvatarPopupOpen} onClose={closeAllPopups}>
         <InputWithLabel name="avatar" id="avatar-input-link" type='url' placeholder='Ссылка на картинку' />
       </PopupWithForm>
 
-      <PopupWithForm name="add" title="Новое место" submitButtonText="Создать" isOpened={isAddPlacePopupOpen} handleCloseButton={setIsAddPlacePopupOpen}>
+      <PopupWithForm name="add" title="Новое место" submitButtonText="Создать" isOpened={isAddPlacePopupOpen} onClose={closeAllPopups}>
         <InputWithLabel name="name" id="add-input-name" type='text' placeholder='Название' />
         <InputWithLabel name="link" id="add-input-link" type='url' placeholder='Ссылка на картинку' />
       </PopupWithForm>
@@ -43,7 +56,7 @@ const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false)
       <PopupWithForm name="delete" title="Вы уверены?" submitButtonText="Да">
       </PopupWithForm>
 
-      <PopupWithImage handleCloseButton isOpened/>
+      <PopupWithImage card={selectedCard} onClose={closeAllPopups}/>
     </>
   );
 }

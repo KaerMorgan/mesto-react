@@ -4,19 +4,15 @@ import CloseButton from './CloseButton';
 
 const PopupWithImage = (props) => {
 
-  function closePopup(){
-    props.handleCloseButton(!props.isOpened)
-  }
-
-
   return (
-    <div className="popup photo-view">
-        <div className="photo-view__container">
-          <CloseButton onClick={closePopup} />
-          <img src="#" alt="Фото места" className="photo-view__image" />
-          <h3 className="photo-view__caption"></h3>
-        </div>
+    <div className={props.card._id ? "popup photo-view popup_opened" : "popup photo-view"}>
+      {/* Пустой объект == true. Обожаю Javascript */}
+      <div className="photo-view__container">
+        <CloseButton onClose={props.onClose} />
+        <img src={props.card.link} alt={props.card.name} className="photo-view__image" />
+        <h3 className="photo-view__caption">{props.card.name}</h3>
       </div>
+    </div>
   )
 }
 

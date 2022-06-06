@@ -1,9 +1,9 @@
 import React from 'react';
 import buttonAdd from '../images/button_add.svg'
 import buttonEdit from '../images/button_edit.svg'
-import profileAvatar from '../images/profile__avatar.png'
 import avatarMask from '../images/avatar-mask.png'
 import api from '../utils/Api';
+import Card from './Card';
 
 
 
@@ -62,19 +62,7 @@ function Main (props) {
       </section>
       <section className="elements">
         <ul className="elements__grid">
-          {cards.map(card => {
-            return (<li class="element">
-            <img src="#" alt="Фото места" class="element__photo" />
-            <div class="element__group">
-              <h2 class="element__caption"></h2>
-              <div class="element__like-group">
-                <button type="button" class="element__like" aria-label="Мне нравится"></button>
-                <p class="element__like-counter">{card.length}</p>
-              </div>
-            </div>
-            <button type="button" aria-label="Удалить" class="element__delete"></button>
-          </li>)
-          })}
+          {cards.map(card => <Card card={card} key={card._id} onCardClick={props.onCardClick} />)}
         </ul>
       </section>
     </main>
