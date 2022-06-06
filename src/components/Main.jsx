@@ -28,17 +28,14 @@ function Main (props) {
     let [cards, setCards] = React.useState([])
 
   React.useEffect(() => {
-    api.getUserInfo().then(data => {
-      setUserName(data.name);
-      setUserDescription(data.about);
-      setUserAvatar(data.avatar);
-    })
-  }, [])
+    Promise.all([api.getUserInfo(), api.getCardList()])
+    .then((dataArray) => {
+      setUserName(dataArray[0].name);
+      setUserDescription(dataArray[0].about);
+      setUserAvatar(dataArray[0].avatar);
 
-  React.useEffect(() => {
-    api.getCardList().then(data => {
-      setCards(data)
-    })
+      setCards(dataArray[1])
+    }).catch(err => console.log(err));
   }, [])
 
   return (
