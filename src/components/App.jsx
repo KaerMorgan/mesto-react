@@ -4,7 +4,7 @@ import Main from './Main'
 import Footer from './Footer';
 import PopupWithForm from './PopupWithForm';
 import InputWithLabel from './InputWithLabel';
-import PopupWithImage from './PopupWithImage';
+import ImagePopup from './ImagePopup';
 
 
 function App() {
@@ -56,7 +56,7 @@ function handleCardClick(card) {
       <PopupWithForm name="delete" title="Вы уверены?" submitButtonText="Да">
       </PopupWithForm>
 
-      <PopupWithImage card={selectedCard} onClose={closeAllPopups}/>
+      <ImagePopup card={selectedCard} onClose={closeAllPopups}/>
     </>
   );
 }

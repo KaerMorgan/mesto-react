@@ -2,7 +2,7 @@
 import React from 'react'
 import CloseButton from './CloseButton';
 
-const PopupWithImage = (props) => {
+const ImagePopup = (props) => {
 
   return (
     <div className={props.card._id ? "popup photo-view popup_opened" : "popup photo-view"}>
@@ -16,4 +16,4 @@ const PopupWithImage = (props) => {
   )
 }
 
-export default PopupWithImage
+export default ImagePopup
