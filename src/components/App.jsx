@@ -12,29 +12,40 @@ function App() {
 const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState(false)
 const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(false)
 const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false)
-const [selectedCard, setSelectedCard] = React.useState(false)
+const [selectedCard, setSelectedCard] = React.useState({})
 
 function closeAllPopups() {
+
   setIsEditProfilePopupOpen(false)
   setIsEditAvatarPopupOpen(false)
   setIsAddPlacePopupOpen(false)
   setSelectedCard({})
 }
 
+function handleEditProfileClick(){
+  handleEditProfileClick(!isEditProfilePopupOpen)
+}
+
+function handleEditAvatarClick(){
+  handleEditAvatarClick(!isEditAvatarPopupOpen)
+}
+
+function handleAddPlaceClick(){
+  handleAddPlaceClick(!isAddPlacePopupOpen)
+}
+
 function handleCardClick(card) {
   setSelectedCard(card)
 }
+
 
   return (
     <>
       <Header />
       <Main
-      isEditProfilePopupOpen={isEditProfilePopupOpen}
-      handleEditProfileClick={setIsEditProfilePopupOpen}
-      isEditAvatarPopupOpen={isEditAvatarPopupOpen}
-      handleEditAvatarClick={setIsEditAvatarPopupOpen}
-      isAddPlacePopupOpen={isAddPlacePopupOpen}
-      handleAddPlaceClick={setIsAddPlacePopupOpen}
+      onEditProfile={handleEditProfileClick}
+      onEditAvatar={handleEditAvatarClick}
+      onAddPlace={handleAddPlaceClick}
       onCardClick={handleCardClick}
       />
       <Footer />

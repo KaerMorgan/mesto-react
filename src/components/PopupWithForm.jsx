@@ -2,17 +2,17 @@ import React from 'react'
 import CloseButton from './CloseButton';
 import SubmitButton from './SubmitButton'
 
-const PopupWithForm = (props) => {
+const PopupWithForm = ({name, title, isOpened, onClose, submitButtonText, children}) => {
 
 
   return (
-    <div className={props.isOpened ? `popup popup_type_${props.name} popup_opened` : `popup popup_type_${props.name}`}>
+    <div className={isOpened ? `popup popup_type_${name} popup_opened` : `popup popup_type_${name}`}>
       <div className="popup__container">
-        <CloseButton onClose={props.onClose} />
-        <form className={`popup__form popup__form_type_${props.name}`} name={`profile-${props.name}`} noValidate>
-          <h3 className="popup__heading">{props.title}</h3>
-          {props.children}
-          <SubmitButton submitButtonText={props.submitButtonText} />
+        <CloseButton onClose={onClose} />
+        <form className={`popup__form popup__form_type_${name}`} name={`profile-${name}`}>
+          <h3 className="popup__heading">{title}</h3>
+          {children}
+          <SubmitButton submitButtonText={submitButtonText} />
         </form>
       </div>
     </div>
