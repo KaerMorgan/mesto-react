@@ -23,15 +23,15 @@ function closeAllPopups() {
 }
 
 function handleEditProfileClick(){
-  handleEditProfileClick(!isEditProfilePopupOpen)
+  setIsEditProfilePopupOpen(!isEditProfilePopupOpen)
 }
 
 function handleEditAvatarClick(){
-  handleEditAvatarClick(!isEditAvatarPopupOpen)
+  setIsEditAvatarPopupOpen(!isEditAvatarPopupOpen)
 }
 
 function handleAddPlaceClick(){
-  handleAddPlaceClick(!isAddPlacePopupOpen)
+  setIsAddPlacePopupOpen(!isAddPlacePopupOpen)
 }
 
 function handleCardClick(card) {
