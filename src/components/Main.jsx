@@ -14,11 +14,6 @@ function Main ({onEditProfile, onEditAvatar, onAddPlace, onCardClick}) {
   const [userDescription, setUserDescription] = React.useState("")
   const [userAvatar, setUserAvatar] = React.useState("")
   const [cards, setCards] = React.useState([])
-  const [avatarHover, setAvatarHover] = React.useState(false)
-
-  function handleAvatarHover(){
-    setAvatarHover(!avatarHover)
-  }
 
   React.useEffect(() => {
 
@@ -36,9 +31,9 @@ function Main ({onEditProfile, onEditAvatar, onAddPlace, onCardClick}) {
 
     <main className="main">
       <section className="profile">
-        <div className="profile__avatar-container" onClick={onEditAvatar} onMouseEnter={handleAvatarHover} onMouseLeave={handleAvatarHover}>
+        <div className="profile__avatar-container" onClick={onEditAvatar}>
           <img src={ userAvatar || defaultAvatar} alt="Аватар" className="profile__avatar" />
-          <div className={avatarHover ? "profile__avatar-mask profile__avatar-mask_active" : "profile__avatar-mask profile__avatar"}><img src={avatarMask} alt="Маска" /></div>
+          <div className="profile__avatar-mask"><img src={avatarMask} alt="Маска" /></div>
         </div>
         <div className="profile__info">
           <h1 className="profile__name" id="profile__name">{userName}</h1>
