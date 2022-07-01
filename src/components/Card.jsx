@@ -1,24 +1,53 @@
-import React from 'react'
+import React from "react";
+import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
-const Card = (props) => {
+const Card = ({ card, onCardClick, onCardLike, onCardDelete }) => {
+  const currentUser = React.useContext(CurrentUserContext);
+  const isOwn = card.owner._id === currentUser._id;
+  const isLiked = card.likes.some((item) => item._id === currentUser._id);
 
   function handleClick() {
-    props.onCardClick(props.card);
+    onCardClick(card);
+  }
+  function handleLike() {
+    onCardLike(card);
+  }
+  function handleDeleteClick() {
+    onCardDelete(card);
   }
 
   return (
-    <li className="element" >
-      <img src={props.card.link} alt="Фото места" className="element__photo" onClick={handleClick} />
+    <li className="element">
+      <img
+        src={card.link}
+        alt="Фото места"
+        className="element__photo"
+        onClick={handleClick}
+      />
       <div className="element__group">
-        <h2 className="element__caption">{props.card.name}</h2>
+        <h2 className="element__caption">{card.name}</h2>
         <div className="element__like-group">
-          <button type="button" className="element__like" aria-label="Мне нравится"></button>
-          <p className="element__like-counter">{props.card.likes.length}</p>
+          <button
+            type="button"
+            className={
+              isLiked ? "element__like element__like_pressed" : "element__like"
+            }
+            onClick={handleLike}
+            aria-label="Мне нравится"
+          ></button>
+          <p className="element__like-counter">{card.likes.length}</p>
         </div>
       </div>
-      <button type="button" aria-label="Удалить" className="element__delete"></button>
+      {isOwn && (
+        <button
+          type="button"
+          aria-label="Удалить"
+          className="element__delete"
+          onClick={handleDeleteClick}
+        ></button>
+      )}
     </li>
-  )
-}
+  );
+};
 
-export default Card
+export default Card;

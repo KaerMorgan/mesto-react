@@ -1,12 +1,27 @@
-import React from 'react'
+import React from "react";
 
-const InputWithLabel = (props) => {
+const InputWithLabel = ({ id, name, type, placeholder, value, onChange }) => {
+  function handleChange(e) {
+    onChange(e.target.value);
+  }
+
   return (
     <label className="popup__field">
-      <input className="popup__input" id={props.id} name={props.name} type={props.type} minLength="2" maxLength="40" placeholder={props.placeholder} required />
-      <span className="popup__input-error" id={`${props.id}-error`}></span>
+      <input
+        className="popup__input"
+        id={id}
+        name={name}
+        type={type}
+        value={value || ""}
+        minLength="2"
+        maxLength={type === "url" ? "300" : "40"}
+        placeholder={placeholder}
+        onChange={handleChange}
+        required
+      />
+      <span className="popup__input-error" id={`${id}-error`}></span>
     </label>
-  )
-}
+  );
+};
 
 export default InputWithLabel;
