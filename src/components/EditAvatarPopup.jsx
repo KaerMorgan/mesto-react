@@ -4,6 +4,10 @@ import PopupWithForm from "./PopupWithForm";
 const EditAvatarPopup = ({ isOpened, onClose, onUpdateAvatar }) => {
   const inputRef = React.useRef();
 
+  React.useEffect(() => {
+    inputRef.current.value = "";
+  }, [isOpened]);
+
   function handleSubmit(e) {
     e.preventDefault();
 
@@ -21,8 +25,6 @@ const EditAvatarPopup = ({ isOpened, onClose, onUpdateAvatar }) => {
       onClose={onClose}
       onSubmit={handleSubmit}
     >
-      {/* Реф не сработал с моим компонентом InputWithLabel, даже с использованием forwardRef, пришлось использовать костыль :( */}
-
       <label className="popup__field">
         <input
           className="popup__input"

@@ -6,14 +6,17 @@ const AddPlacePopup = ({ isOpened, onClose, onAddPlace }) => {
   const [name, setName] = React.useState("");
   const [link, setLink] = React.useState("");
 
+  React.useEffect(() => {
+    setName("");
+    setLink("");
+  }, [isOpened]);
+
   function handleSubmit(e) {
     e.preventDefault();
     onAddPlace({
       name,
       link,
     });
-    setName("");
-    setLink("");
   }
 
   return (

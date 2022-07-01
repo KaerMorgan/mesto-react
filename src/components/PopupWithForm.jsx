@@ -1,6 +1,5 @@
 import React from "react";
 import CloseButton from "./CloseButton";
-import SubmitButton from "./SubmitButton";
 
 const PopupWithForm = ({
   name,
@@ -12,13 +11,7 @@ const PopupWithForm = ({
   onSubmit,
 }) => {
   return (
-    <div
-      className={
-        isOpened
-          ? `popup popup_type_${name} popup_opened`
-          : `popup popup_type_${name}`
-      }
-    >
+    <div className={`popup popup_type_${name} ${isOpened && "popup_opened"}`}>
       <div className="popup__container">
         <CloseButton onClose={onClose} />
         <form
@@ -28,7 +21,9 @@ const PopupWithForm = ({
         >
           <h3 className="popup__heading">{title}</h3>
           {children}
-          <SubmitButton submitButtonText={submitButtonText} />
+          <button className="popup__submit" type="submit">
+            {submitButtonText}
+          </button>
         </form>
       </div>
     </div>
