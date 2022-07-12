@@ -54,4 +54,4 @@ npm run build
 
 ### Ссылка на GitHub Pages:
 
-https://kaermorgan.github.io/mesto-react/index.html
+https://kaermorgan.github.io/mesto-react/
